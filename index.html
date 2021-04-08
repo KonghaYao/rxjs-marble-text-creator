@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RXJS Marble Text Animation Creator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+
+</head>
+
+<body>
+    <div id='view'>
+        <div id='canvas'></div>
+    </div>
+    <div class='coder'>
+        <div id="container" style="width: 100%;height: 100%;">
+        </div>
+        <div class='toolbar'>
+            <span id='run' class='btn'>RUN</span>
+            <span id='state' class='btn'>Listening Mode</span>
+            <a href="" class='btn'><span class='btn'>Github</span></a>
+            <a href="" class='btn'><span class='btn'>Gitee</span></a>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/rxjs/bundles/rxjs.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.23.0/min/vs/loader.js"></script>
+
+<script src="./index.js" type="module"></script>
+<style>
+    body {
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        background-color: #fafafa;
+        display: flex;
+
+    }
+
+    .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color .5s;
+        width: 100px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #fafafa;
+    }
+
+    .toolbar {
+        height: 64px;
+        display: flex;
+        width: 100%;
+        background-color: #fff;
+    }
+
+    #canvas {
+
+        position: relative;
+        width: 50%;
+        height: 50%;
+    }
+
+    .Line {
+        position: absolute;
+        height: 0.25rem;
+        width: 100%;
+        background-color: #000
+    }
+
+    .coder {
+        max-width: 50vw;
+        height: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #view {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #container {
+        max-width: 50vw;
+        flex: 1
+    }
+
+    .Ball {
+        position: absolute;
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: rgb(164, 111, 250)
+    }
+</style>
+
+</html>
