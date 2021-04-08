@@ -1,0 +1,103 @@
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-color: #fafafa;
+    display: flex;
+flex-direction: column;
+}
+header{
+    display:flex;
+    
+
+}
+main{
+    display: flex;
+    flex:1
+}
+.logo{
+    height: 70%;
+    margin: 0 1em;
+}
+.logoOut{
+    font-size: 20px;
+    background-image:linear-gradient(45deg,#7c0094,#ff27a1cd,#ff0090);
+    font-weight: bolder;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .5s;
+    min-width: 100px;
+    padding:2px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #fafafa;
+}
+
+.toolbar {
+    height: 64px;
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+}
+
+#canvas {
+    position: relative;
+    width: 50%;
+    height: 50%;
+}
+
+.Line {
+    position: absolute;
+    height: 0.25rem;
+    width: 100%;
+    background-image: linear-gradient(45deg,#c119e2,#ff0090);
+    color:rgb(73, 142, 253);
+    text-align: right;
+    line-height: 4rem;
+    border-radius: 50%;
+}
+
+.coder {
+    max-width: 50vw;
+    height: 100%;
+   
+    display: flex;
+    flex-direction: column;
+}
+
+#view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+#container {
+    max-width: 50vw;
+    flex: 1;
+    height: 100%;
+}
+
+.Ball {
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    color: #fafafa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-image:linear-gradient(45deg,#c119e2,#ff0090);
+    
+}

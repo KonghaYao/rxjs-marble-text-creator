@@ -1,5 +1,5 @@
-import { drawer } from "./BaseChange.js";
-import { editor, restart } from "./editorImport.js";
+import { drawer } from "./js/BaseChange.js";
+import { editor, restart } from "./js/editorImport.js";
 
 // DOM Event 挂载
 const run = document.getElementById("run");

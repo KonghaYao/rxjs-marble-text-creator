@@ -30,6 +30,10 @@ require(["vs/editor/editor.main"], () => {
         language: "javascript",
     });
     editor.setValue(code);
+    console.log(editor);
+    editor.onDidBlurEditorText(() => {
+        localStorage.setItem("my-code", editor.getValue());
+    });
     window.onload = function () {
         document.querySelector("#run").click();
     };
