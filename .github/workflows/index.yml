@@ -1,0 +1,15 @@
+name: project
+
+on: [push]
+
+jobs:
+  build:
+    name: 统一更新操作
+    runs-on: ubuntu-latest
+    steps:
+      - name: 延时
+        run: sleep 1m
+      - name: 缓存更新
+        run: curl https://purge.jsdelivr.net/gh/KonghaYao/rxjs-marble-test-creator
+      - name: Gitee更新
+        run: curl https://gitee.com/api/v5/repos/dongzhongzhidong/rxjs-marble-test-creator/pages/builds
