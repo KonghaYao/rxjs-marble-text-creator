@@ -47,7 +47,7 @@ class LineList {
 
 class BallTest {
     constructor(id, options) {
-        const { lineHeight = 5, BallR = 2.5, timeScale = 1000, listening = true } = options || {};
+        const { lineHeight = 5, BallR = 2.5, timeScale = 1000, listening } = options || {};
         this.draw = document.querySelector(id);
         Object.assign(this, {
             lineHeight,

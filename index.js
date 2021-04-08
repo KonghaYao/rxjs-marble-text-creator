@@ -16,5 +16,6 @@ rxjs.fromEvent(document.getElementById("state"), "click")
                 drawer.listening = true;
                 target.innerText = "Listening Mode";
         }
+        localStorage.setItem("listening", drawer.listening);
         restart();
     });
