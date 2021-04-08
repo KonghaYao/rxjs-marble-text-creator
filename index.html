@@ -19,17 +19,21 @@
         <div class='btn logoOut'>
             <img src="./assets/SVG/logo.svg" class='logo'>
             <div>Rxjs Marble Animation</div>
+
         </div>
+        <div class="flex-grow"></div>
+        <div class='btn logoOut ' id='hideEditor'>EditorVisible</div>
+        <div class='btn logoOut run ' class=''>RUN</div>
     </header>
     <main>
         <div id='view'>
             <div id='canvas'></div>
         </div>
-        <div class='coder'>
+        <div class='coder animate__animated' id='editor'>
             <div id="container" style="width: 100%;height: 100%;">
             </div>
             <div class='toolbar'>
-                <span id='run' class='btn'>RUN</span>
+                <span class='btn run'>RUN</span>
                 <span id='state' class='btn'>Listening Mode</span>
                 <a href="" class='btn'>
                     <span class='btn'>Github</span>

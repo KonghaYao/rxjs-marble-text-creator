@@ -1,44 +1,56 @@
-
 body {
     height: 100vh;
     width: 100vw;
     margin: 0;
     background-color: #fafafa;
     display: flex;
-flex-direction: column;
+    flex-direction: column;
 }
-header{
-    display:flex;
-    
+
+header {
+    display: flex;
+
 
 }
-main{
+
+main {
+    
+    flex: 1;
     display: flex;
-    flex:1
+    overflow: hidden;
+    
 }
-.logo{
+
+.logo {
     height: 70%;
     margin: 0 1em;
 }
-.logoOut{
+
+.logoOut {
     font-size: 20px;
-    background-image:linear-gradient(45deg,#7c0094,#ff27a1cd,#ff0090);
+    background-image: linear-gradient(45deg, #7c0094, #ff27a1cd, #ff0090);
     font-weight: bolder;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
 .btn {
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color .5s;
     min-width: 100px;
-    padding:2px;
+    padding: 2px;
     cursor: pointer;
 }
 
 .btn:hover {
     background-color: #fafafa;
+}
+
+.hide {
+    opacity:  0;
+    width: 0;
 }
 
 .toolbar {
@@ -50,16 +62,16 @@ main{
 
 #canvas {
     position: relative;
-    width: 50%;
-    height: 50%;
+    width: 70%;
+    height: 70%;
 }
 
 .Line {
     position: absolute;
     height: 0.25rem;
     width: 100%;
-    background-image: linear-gradient(45deg,#c119e2,#ff0090);
-    color:rgb(73, 142, 253);
+    background-image: linear-gradient(45deg, #c119e2, #ff0090);
+    color: rgb(73, 142, 253);
     text-align: right;
     line-height: 4rem;
     border-radius: 50%;
@@ -68,11 +80,14 @@ main{
 .coder {
     max-width: 50vw;
     height: 100%;
-   
+    background-color: #fafafa;
     display: flex;
     flex-direction: column;
+    transition:  .5s;
 }
-
+.flex-grow{
+    flex:1
+}
 #view {
     flex: 1;
     display: flex;
@@ -98,6 +113,6 @@ main{
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-image:linear-gradient(45deg,#c119e2,#ff0090);
-    
+    background-image: linear-gradient(45deg, #c119e2, #ff0090);
+
 }

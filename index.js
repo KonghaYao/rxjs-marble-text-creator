@@ -2,8 +2,10 @@ import { drawer } from "./js/BaseChange.js";
 import { editor, restart } from "./js/editorImport.js";
 
 // DOM Event 挂载
-const run = document.getElementById("run");
+const run = document.querySelectorAll(".run");
+
 rxjs.fromEvent(run, "click").pipe(rxjs.operators.throttleTime(2000)).subscribe(restart);
+
 rxjs.fromEvent(document.getElementById("state"), "click")
     .pipe(rxjs.operators.throttleTime(2000), rxjs.operators.pluck("target"))
     .subscribe((target) => {
@@ -17,5 +19,11 @@ rxjs.fromEvent(document.getElementById("state"), "click")
                 target.innerText = "Listening Mode";
         }
         localStorage.setItem("listening", drawer.listening);
+        restart();
+    });
+rxjs.fromEvent(document.getElementById("hideEditor"), "click")
+    .pipe(rxjs.operators.throttleTime(500))
+    .subscribe(() => {
+        document.getElementById("editor").classList.toggle("hide");
         restart();
     });

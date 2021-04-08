@@ -34,9 +34,6 @@ require(["vs/editor/editor.main"], () => {
     editor.onDidBlurEditorText(() => {
         localStorage.setItem("my-code", editor.getValue());
     });
-    window.onload = function () {
-        document.querySelector("#run").click();
-    };
 });
 // 重新加载动画的一个函数
 function restart() {
@@ -47,4 +44,7 @@ function restart() {
     eval(`let {${Object.keys(rxjs.operators).join(",")}} = rxjs.operators`);
     eval(code);
 }
+window.onload = () => {
+    restart();
+};
 export { editor, restart };
