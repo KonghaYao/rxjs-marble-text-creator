@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <iframe src='https://konghayao.github.io/rxjs-marble-text-creator/animation'></iframe>
+    <textarea name="" id="code" cols="300" rows="10"></textarea>
+    <button onclick='click'>发送</button>
+</body>
+<script>
+
+    function click() {
+        document.getElementById('iframe').contentWindow.postMessage({
+            listening: true,
+            data: document.getElementById('code')
+        })
+    }
+
+</script>
+
+</html>

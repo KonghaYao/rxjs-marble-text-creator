@@ -5,8 +5,8 @@ export default `
 // If you feel that the generated animation is not right, you can click on the mode switch button below!
 // 如果您感觉到生成动画不对劲，可以点击下面的模式切换按钮！
 // 下面是关于 并发操作 的一个代码。
-let {range,of} = rxjs;
-let {map ,bufferCount,concatMap,map} = rxjs.operators
+let { range, of } = rxjs;
+let { map, bufferCount, concatMap } = rxjs.operators;
 range(0, 10)
     .pipe(
         map((current, index) => {
@@ -19,4 +19,5 @@ range(0, 10)
         map((i) => i)
     )
     .subscribe((item) => console.log("完成", new Date().getTime()));
+
 `;

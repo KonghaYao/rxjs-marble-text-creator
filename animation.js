@@ -1,6 +1,6 @@
 import { drawer } from "./js/BaseChange.js";
 let { fromEvent } = rxjs;
-let { pluck, tap } = rxjs.operators;
+let { pluck, tap, filter } = rxjs.operators;
 
 // 重新加载动画的一个函数
 function restart(code) {
@@ -19,6 +19,8 @@ function CodePrepare(code, rxjs) {
 window.onload = () => {
     restart();
 };
+let Origan = ["https://konghayao.github.io"];
+
 fromEvent(window, "message")
     .pipe(
         tap((i) => console.warn(i)),
@@ -26,7 +28,7 @@ fromEvent(window, "message")
     )
     .subscribe((data) => {
         console.log("数据", data);
-        const { listening, code } = data;
+        const { listening, data: code } = data;
         drawer.listening = listening;
         if (code) localStorage.setItem("my-code", code);
         restart(code);
