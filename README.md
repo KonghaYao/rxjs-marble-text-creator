@@ -1,8 +1,7 @@
-<div style='display:flex;flex-direction:column;justify-content:center;align-items:center'>
-<img src='./assets/SVG/logo.svg' style='width:20%;'>
-<h3 style='background-image: linear-gradient(45deg, #7c0094, #ff27a1cd, #ff0090);font-weight: bolder; -webkit-background-clip: text;-webkit-text-fill-color: transparent;'> RXJS Marble Test Animation Creator</h3>
-</div>
+<img src='./doc/assets/header.png'>
+
 # RXJS 弹珠测试动画生成网站
+
 #### RXJS Marble Test Animation Creator
 
 
