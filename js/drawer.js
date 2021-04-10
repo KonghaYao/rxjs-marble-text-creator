@@ -1,5 +1,6 @@
 import rxjs from "./rxjsImport.js";
-import FunctionList from "./rxjsFunction.js";
+import createRxjsProxy from "./rxjsProxy.js";
+
 // 这是画行的函数
 class LineList {
     constructor(draw, lineHeight) {
@@ -60,9 +61,21 @@ class BallTest {
         });
 
         this.canvasClean(); // 这个函数会重新赋值
-        this.changeRxJS();
-        this.changeRxJSOperator();
+        this.rxjs = createRxjsProxy(rxjs, this.creatorsFunc.bind(this), this.operatorsFunc.bind(this));
         console.log(this);
+    }
+    creatorsFunc(key) {
+        return rxjs.operators.tap((val) => {
+            const Key = "$" + key;
+            this.newBall(val, Key, { lineName: Key, time: new Date().getTime() });
+            console.log(Key, val);
+        });
+    }
+    operatorsFunc(source, key) {
+        return rxjs.operators.tap((val) => {
+            this.newBall(val, key + JSON.stringify(source), { lineName: key, time: new Date().getTime() });
+            console.log(key, val);
+        });
     }
     // 重置画布的函数
     canvasClean() {
@@ -71,40 +84,7 @@ class BallTest {
         // this.draw.innerHTML = "";
         this.startTime = new Date().getTime();
     }
-    // 修改 Rxjs 中的函数
-    changeRxJS() {
-        this.rxjs = Object.assign({}, rxjs);
-        FunctionList.forEach((key) => {
-            this.rxjs[key] = (...args) =>
-                rxjs[key](...args).pipe(
-                    rxjs.operators.tap((val) => {
-                        const Key = "$" + key;
-                        this.newBall(val, Key, { lineName: Key, time: new Date().getTime() });
-                        console.log(Key, val);
-                    })
-                );
-        });
-        console.log("rxjs 修改完成");
-    }
-    // 记录操作符
-    changeRxJSOperator() {
-        // 挂载 RXJS 的操作符，其实是外包了一层，加上一个 tap 函数产生副作用
-        this.rxjs.operators = Object.entries(rxjs.operators).reduce((collection, [key, value]) => {
-            collection[key] = (...args) => {
-                return (source) => {
-                    return source.pipe(
-                        value(...args),
-                        rxjs.operators.tap((val) => {
-                            this.newBall(val, key + JSON.stringify(source), { lineName: key, time: new Date().getTime() });
-                            console.log(key, val);
-                        })
-                    );
-                };
-            };
-            return collection;
-        }, {});
-        console.log("rxjs 操作符 修改完成");
-    }
+
     // 提供给外部的创建弹珠的函数
     newBall(value, lineKey, { lineName, time }) {
         // 判断是否需要加一条线

@@ -1,28 +1,29 @@
-import { drawer } from "./js/BaseChange.js";
 import { editor, restart } from "./js/editorImport.js";
-
+let { fromEvent } = rxjs;
+let { pluck, throttleTime } = rxjs.operators;
 // DOM Event 挂载
 const run = document.querySelectorAll(".run");
 
-rxjs.fromEvent(run, "click").pipe(rxjs.operators.throttleTime(2000)).subscribe(restart);
+fromEvent(run, "click").pipe(throttleTime(2000)).subscribe(restart);
 
-rxjs.fromEvent(document.getElementById("state"), "click")
-    .pipe(rxjs.operators.throttleTime(2000), rxjs.operators.pluck("target"))
+fromEvent(document.getElementById("state"), "click")
+    .pipe(throttleTime(2000), pluck("target"))
     .subscribe((target) => {
+        let listening;
         switch (target.innerText) {
             case "Listening Mode":
-                drawer.listening = false;
+                listening = false;
                 target.innerText = "Slowing Mode";
                 break;
             case "Slowing Mode":
-                drawer.listening = true;
+                listening = true;
                 target.innerText = "Listening Mode";
         }
-        localStorage.setItem("listening", drawer.listening);
-        restart();
+        localStorage.setItem("listening", listening);
+        document.getElementById("iframe").contentWindow.postMessage({ listening });
     });
-rxjs.fromEvent(document.getElementById("hideEditor"), "click")
-    .pipe(rxjs.operators.throttleTime(500))
+fromEvent(document.getElementById("hideEditor"), "click")
+    .pipe(throttleTime(500))
     .subscribe(() => {
         document.getElementById("editor").classList.toggle("hide");
         restart();
